@@ -54,9 +54,9 @@ export default function LandingPage() {
         </h1>
         <div className="hero-accent-line" aria-hidden="true" />
         <p className="hero-description">
-          Type a company name. The agent returns a structured investment memo
-          your team would otherwise spend two days assembling — in the same
-          shape, every time, for every deal.
+          Type a company name and its website. The agent returns a structured
+          investment memo your team would otherwise spend two days assembling —
+          in the same shape, every time, for every deal.
         </p>
 
         <section className="io-panel" aria-label="Company input">

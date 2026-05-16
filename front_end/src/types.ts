@@ -1,4 +1,4 @@
-export type Verdict = "Bullish" | "Neutral" | "Bearish" | string;
+export type Verdict = "Bullish" | "Neutral" | "Risky" | "Pass" | string;
 
 export type CompetitorPosition = "stronger" | "comparable" | "weaker" | string;
 

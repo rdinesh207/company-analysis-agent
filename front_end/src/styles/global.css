@@ -142,6 +142,18 @@ input {
   color: var(--text-muted);
 }
 
+.io-input-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .io-input-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 .io-input {
   width: 100%;
   padding: 14px 16px;

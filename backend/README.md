@@ -58,10 +58,11 @@ http://127.0.0.1:8000/docs
 
 ## Zeabur deployment
 
-This repo includes `zbpack.json` for Zeabur. The app starts with:
+Use the repository root as the backend service root on Zeabur. The root
+`zbpack.json` installs `backend/requirements.txt` and starts the app with:
 
 ```bash
-uvicorn app.main:app --host 0.0.0.0 --port $PORT
+cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
 ```
 
 Set frontend CORS domains later in `app/main.py` before production if needed.

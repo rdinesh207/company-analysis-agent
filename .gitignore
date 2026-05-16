@@ -3,3 +3,22 @@
 !.env.example
 
 .claude/settings.local.json
+
+# OS / editor
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+backend/.venv/
+
+# Frontend
+front_end/node_modules/
+front_end/dist/
+front_end/*.tsbuildinfo
+
+# Logs
+*.log

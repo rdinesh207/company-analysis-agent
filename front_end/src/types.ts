@@ -1,9 +1,10 @@
-export type Verdict = "Bullish" | "Neutral" | "Bearish" | string;
+export type Verdict = "Bullish" | "Neutral" | "Risky" | "Pass" | string;
 
 export type CompetitorPosition = "stronger" | "comparable" | "weaker" | string;
 
 export interface AnalyzeRequest {
   company_name: string;
+  company_website: string;
 }
 
 export interface ConfidenceReasoning {

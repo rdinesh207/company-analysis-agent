@@ -6,7 +6,7 @@ const API_BASE =
 export async function analyzeCompany(
   payload: AnalyzeRequest,
 ): Promise<CompanyAnalysisResponse> {
-  const response = await fetch(`${API_BASE}/analyze`, {
+  const response = await fetch(`${API_BASE}/v1/investment-analysis`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),

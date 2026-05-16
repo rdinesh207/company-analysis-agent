@@ -3,7 +3,7 @@ import type { CompetitorPosition, Verdict } from "./types";
 export function verdictTone(verdict: Verdict): "positive" | "neutral" | "negative" {
   const v = verdict.toLowerCase();
   if (v.includes("bull")) return "positive";
-  if (v.includes("bear")) return "negative";
+  if (v.includes("bear") || v.includes("risk") || v === "pass") return "negative";
   return "neutral";
 }
 
@@ -25,4 +25,12 @@ export function positionTone(
 
 export function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+export function normalizeWebsite(raw: string): string {
+  const trimmed = raw.trim();
+  if (!trimmed) return "";
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  if (!trimmed.includes(".")) return "";
+  return `https://${trimmed}`;
 }

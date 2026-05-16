@@ -27,25 +27,17 @@ SEARCH_QUERIES: dict[SearchIntent, str] = {
     "competitors": '"{name}" vs alternatives competitors',
 }
 
-TOP_RESULTS_PER_QUERY = 3
+TOP_RESULTS_PER_QUERY = 2
 PAGES_TO_SCRAPE_PER_QUERY = 0
 MAX_TOTAL_SCRAPED_PAGES = 0
 
 
 async def _collect(name: str, website: str) -> RawSignal:
     async with BrightDataClient() as bd:
-        homepage_task = asyncio.create_task(bd.scrape_as_markdown(website))
         queries = [tmpl.format(name=name) for tmpl in SEARCH_QUERIES.values()]
         search_task = asyncio.create_task(
             bd.search_engine_batch(queries, num_results=TOP_RESULTS_PER_QUERY)
         )
-
-        homepage_md: str | None
-        try:
-            homepage_md = await homepage_task
-        except BrightDataError as exc:
-            log.warning("homepage scrape failed for %s: %s", website, exc)
-            homepage_md = None
 
         search_raw = await search_task
 
@@ -77,7 +69,7 @@ async def _collect(name: str, website: str) -> RawSignal:
     return RawSignal(
         company_name=name,
         company_website=website,
-        homepage_markdown=homepage_md,
+        homepage_markdown=None,
         search_results=search_results,
         scraped_pages=scraped_pages,
         scraped_at=datetime.now(timezone.utc),

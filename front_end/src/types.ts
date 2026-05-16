@@ -4,6 +4,7 @@ export type CompetitorPosition = "stronger" | "comparable" | "weaker" | string;
 
 export interface AnalyzeRequest {
   company_name: string;
+  company_website?: string;
 }
 
 export interface ConfidenceReasoning {
@@ -63,15 +64,4 @@ export interface CompanyAnalysisResponse {
   risk_analysis: RiskAnalysis;
 }
 
-export type MemoSectionId =
-  | "investment"
-  | "company"
-  | "market"
-  | "competitors"
-  | "risk"
-  | "founder-questions";
-
-export interface MemoCard {
-  id: MemoSectionId;
-  label: string;
-}
+export type DetailSectionId = "company" | "market" | "competitors" | "risk";

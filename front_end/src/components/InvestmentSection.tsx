@@ -17,12 +17,9 @@ export default function InvestmentSection({ data }: InvestmentSectionProps) {
 
   return (
     <section id="investment" className="report-block">
-      <div className="report-header">
-        <h2 className="report-title">
-          Investment recommendation — {company_name}
-        </h2>
-        <span className={`badge badge-${tone}`}>{rec.verdict}</span>
-      </div>
+      <h2 className="report-title">
+        Investment recommendation — {company_name}
+      </h2>
 
       <div className="metrics-row">
         <div className="metric-card">

@@ -2,10 +2,12 @@ import type { CompanyAnalysisResponse } from "../types";
 
 interface CompanyOverviewSectionProps {
   data: CompanyAnalysisResponse;
+  embedded?: boolean;
 }
 
 export default function CompanyOverviewSection({
   data,
+  embedded = false,
 }: CompanyOverviewSectionProps) {
   const o = data.company_overview;
   const foundedHq = [o.founded, o.hq].filter(Boolean).join(" · ");
@@ -22,8 +24,8 @@ export default function CompanyOverviewSection({
   ];
 
   return (
-    <section id="company" className="detail-card">
-      <h3 className="detail-card-title">Company overview</h3>
+    <section id="company" className={embedded ? "detail-card-embedded" : "detail-card"}>
+      {!embedded ? <h3 className="detail-card-title">Company overview</h3> : null}
       <dl className="kv-list">
         {rows.map((row) => (
           <div key={row.key} className="kv-row">

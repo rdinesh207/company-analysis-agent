@@ -2,14 +2,15 @@ import type { CompanyAnalysisResponse } from "../types";
 
 interface MarketSectionProps {
   data: CompanyAnalysisResponse;
+  embedded?: boolean;
 }
 
-export default function MarketSection({ data }: MarketSectionProps) {
+export default function MarketSection({ data, embedded = false }: MarketSectionProps) {
   const m = data.market_analysis;
 
   return (
-    <section id="market" className="detail-card">
-      <h3 className="detail-card-title">Market analysis</h3>
+    <section id="market" className={embedded ? "detail-card-embedded" : "detail-card"}>
+      {!embedded ? <h3 className="detail-card-title">Market analysis</h3> : null}
       <article className="subsection">
         <h4 className="subsection-title">Why the problem matters</h4>
         <p className="subsection-body">{m.why_problem_matters}</p>

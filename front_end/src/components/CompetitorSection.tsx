@@ -3,6 +3,7 @@ import { positionLabel, positionTone } from "../utils";
 
 interface CompetitorSectionProps {
   data: CompanyAnalysisResponse;
+  embedded?: boolean;
 }
 
 function CompetitorRow({ entry }: { entry: CompetitorEntry }) {
@@ -19,15 +20,15 @@ function CompetitorRow({ entry }: { entry: CompetitorEntry }) {
   );
 }
 
-export default function CompetitorSection({ data }: CompetitorSectionProps) {
+export default function CompetitorSection({ data, embedded = false }: CompetitorSectionProps) {
   const all = [
     ...data.competitor_analysis.direct_competitors,
     ...data.competitor_analysis.substitutes_or_incumbents,
   ];
 
   return (
-    <section id="competitors" className="detail-card">
-      <h3 className="detail-card-title">Competitor analysis</h3>
+    <section id="competitors" className={embedded ? "detail-card-embedded" : "detail-card"}>
+      {!embedded ? <h3 className="detail-card-title">Competitor analysis</h3> : null}
       <ul className="competitor-list">
         {all.map((entry) => (
           <CompetitorRow key={`${entry.name}-${entry.position}`} entry={entry} />

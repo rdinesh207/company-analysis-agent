@@ -2,6 +2,7 @@ import type { CompanyAnalysisResponse } from "../types";
 
 interface RiskSectionProps {
   data: CompanyAnalysisResponse;
+  embedded?: boolean;
 }
 
 const RISK_ROWS: {
@@ -14,12 +15,12 @@ const RISK_ROWS: {
   { key: "monetization_risk", label: "Monetization" },
 ];
 
-export default function RiskSection({ data }: RiskSectionProps) {
+export default function RiskSection({ data, embedded = false }: RiskSectionProps) {
   const risks = data.risk_analysis;
 
   return (
-    <section id="risk" className="detail-card">
-      <h3 className="detail-card-title">Risk analysis</h3>
+    <section id="risk" className={embedded ? "detail-card-embedded" : "detail-card"}>
+      {!embedded ? <h3 className="detail-card-title">Risk analysis</h3> : null}
       <ul className="risk-list">
         {RISK_ROWS.map(({ key, label }) => (
           <li key={key} className="risk-row">

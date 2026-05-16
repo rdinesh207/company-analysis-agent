@@ -1,27 +1,38 @@
 import { FormEvent, useState } from "react";
 import { analyzeCompany } from "../api";
 import type { CompanyAnalysisResponse, MemoSectionId } from "../types";
-import { scrollToSection } from "../utils";
+import { normalizeWebsite, scrollToSection } from "../utils";
 import MemoGrid from "./MemoGrid";
 import AnalysisReport from "./AnalysisReport";
 
 export default function LandingPage() {
   const [companyName, setCompanyName] = useState("");
+  const [companyWebsite, setCompanyWebsite] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<CompanyAnalysisResponse | null>(null);
 
+  const canSubmit =
+    !loading && companyName.trim().length > 0 && companyWebsite.trim().length > 0;
+
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     const name = companyName.trim();
-    if (!name) return;
+    const website = normalizeWebsite(companyWebsite);
+    if (!name || !website) {
+      setError("Enter a company name and a website URL.");
+      return;
+    }
 
     setLoading(true);
     setError(null);
     setResult(null);
 
     try {
-      const data = await analyzeCompany({ company_name: name });
+      const data = await analyzeCompany({
+        company_name: name,
+        company_website: website,
+      });
       setResult(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
@@ -47,26 +58,40 @@ export default function LandingPage() {
         </h1>
         <div className="hero-accent-line" aria-hidden />
         <p className="hero-description">
-          Type a company name. The agent returns a structured investment memo
-          your team would otherwise spend two days assembling — in the same
-          shape, every time, for every deal.
+          Type a company name and its website. The agent returns a structured
+          investment memo your team would otherwise spend two days assembling —
+          in the same shape, every time, for every deal.
         </p>
 
         <section className="io-panel" aria-label="Input and memo preview">
           <div className="io-input-wrap">
             <p className="io-label">Input</p>
             <form className="io-form" onSubmit={handleSubmit}>
-              <input
-                className="io-input"
-                type="text"
-                placeholder="Enter company name"
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-                disabled={loading}
-                aria-label="Company name"
-              />
-              <p className="io-hint">e.g. &apos;Cursor&apos;, &apos;Ramp&apos;, &apos;Hightouch&apos;</p>
-              <button className="io-submit" type="submit" disabled={loading || !companyName.trim()}>
+              <div className="io-input-row">
+                <input
+                  className="io-input"
+                  type="text"
+                  placeholder="Company name"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  disabled={loading}
+                  aria-label="Company name"
+                />
+                <input
+                  className="io-input"
+                  type="text"
+                  placeholder="Website (e.g. cursor.com)"
+                  value={companyWebsite}
+                  onChange={(e) => setCompanyWebsite(e.target.value)}
+                  disabled={loading}
+                  aria-label="Company website"
+                  inputMode="url"
+                />
+              </div>
+              <p className="io-hint">
+                e.g. &apos;Cursor&apos; · cursor.com — both fields required
+              </p>
+              <button className="io-submit" type="submit" disabled={!canSubmit}>
                 {loading ? "Analyzing…" : "Generate memo"}
               </button>
             </form>
@@ -84,7 +109,7 @@ export default function LandingPage() {
               <div className="io-output-placeholder">
                 {loading
                   ? "Building structured memo…"
-                  : "Submit a company name to preview memo sections"}
+                  : "Submit a company name and website to preview memo sections"}
               </div>
             )}
           </div>

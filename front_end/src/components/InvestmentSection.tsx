@@ -24,7 +24,7 @@ export default function InvestmentSection({ data }: InvestmentSectionProps) {
       <div className="metrics-row">
         <div className="metric-card">
           <p className={`metric-value ${valueClass}`}>{rec.confidence_score}</p>
-          <p className="metric-label">Confidence (0–100)</p>
+          <p className="metric-label">Confidence score</p>
         </div>
         <div className="metric-card">
           <p className={`metric-value ${valueClass}`}>{rec.verdict}</p>
@@ -35,7 +35,7 @@ export default function InvestmentSection({ data }: InvestmentSectionProps) {
       <div className="detail-card detail-card-full">
         <h3 className="detail-card-title">Confidence reasoning</h3>
         <div className="reasoning-block">
-          <h4 className="subsection-title">What moves it up</h4>
+          <h4 className="subsection-title">What moves the score up</h4>
           <ul className="bullet-list">
             {rec.confidence_reasoning.what_moves_it_up.map((item) => (
               <li key={item}>{item}</li>
@@ -43,7 +43,7 @@ export default function InvestmentSection({ data }: InvestmentSectionProps) {
           </ul>
         </div>
         <div className="reasoning-block">
-          <h4 className="subsection-title">What moves it down</h4>
+          <h4 className="subsection-title">What moves the score down</h4>
           <ul className="bullet-list">
             {rec.confidence_reasoning.what_moves_it_down.map((item) => (
               <li key={item}>{item}</li>

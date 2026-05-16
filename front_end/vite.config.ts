@@ -12,4 +12,7 @@ export default defineConfig({
       },
     },
   },
+  preview: {
+    allowedHosts: ["company-analysis-frontend-6a08f9.zeabur.app"],
+  },
 });

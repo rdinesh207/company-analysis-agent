@@ -1,0 +1,116 @@
+{
+  "company": {
+    "name": "Pulumi",
+    "website": "https://www.pulumi.com",
+    "description": "Pulumi is a Seattle-based cloud engineering company that offers a way to build, connect, and run modern cloud applications. Pulumi provides frameworks and libraries to define, deploy, and manage cloud services \u2014 from serverless to container to virtual machines \u2014 using pure code, for any cloud, with clear collaboration for teams and enterprises.",
+    "product": "Infrastructure as Code (IaC) platform supporting any programming language (Node.js, Python, Go, .NET, Java, YAML) across 170+ cloud providers. Key products include Pulumi IaC, Pulumi ESC (Environments, Secrets & Configuration), Pulumi Insights & Governance, Internal Developer Platforms, and Neo (AI-powered infrastructure engineering agent).",
+    "founded": null
+  },
+  "founders": [
+    {
+      "name": "Joe Duffy",
+      "role": "Founder & CEO",
+      "linkedin_url": "https://www.linkedin.com/in/joejduffy",
+      "background": "Previously Partner Director of Technical Strategy for Developer Tools at Microsoft. Founder and CEO of Pulumi since its inception.",
+      "prior_companies": [
+        "Microsoft"
+      ]
+    },
+    {
+      "name": "Eric Rudder",
+      "role": "Founder",
+      "linkedin_url": null,
+      "background": "Previously Executive Vice President of Advanced Strategy at Microsoft.",
+      "prior_companies": [
+        "Microsoft"
+      ]
+    }
+  ],
+  "funding": {
+    "total_raised": null,
+    "rounds": [
+      {
+        "round": "Series C",
+        "amount": null,
+        "date": null,
+        "investors": [
+          "Madrona",
+          "New Enterprise Associates",
+          "Tola Capital"
+        ]
+      },
+      {
+        "round": "Series B",
+        "amount": null,
+        "date": null,
+        "investors": [
+          "New Enterprise Associates"
+        ]
+      },
+      {
+        "round": "Series A",
+        "amount": null,
+        "date": null,
+        "investors": [
+          "Madrona"
+        ]
+      },
+      {
+        "round": "Seed/Other",
+        "amount": null,
+        "date": null,
+        "investors": []
+      }
+    ]
+  },
+  "news": [
+    {
+      "title": "Pulumi Introduces AI-Powered Automatic Remediation for Infrastructure Policy Violations",
+      "url": "https://www.pulumi.com/about/newsroom/",
+      "date": "2025-11-05",
+      "summary": "Pulumi launched AI-powered automatic remediation capabilities for infrastructure policy violations."
+    },
+    {
+      "title": "Introducing Pulumi Neo, the AI-Powered Infrastructure Engineering Agent",
+      "url": "https://www.pulumi.com/about/newsroom/",
+      "date": "2025-09-16",
+      "summary": "Pulumi introduced Neo, an AI-powered agent designed for infrastructure engineering and platform engineers."
+    },
+    {
+      "title": "Pulumi 2024 Year in Review: Growth, Innovation and Appreciation",
+      "url": "https://www.pulumi.com/blog/pulumi-year-in-review/",
+      "date": "2024-12-20",
+      "summary": "Pulumi reported over 100M downloads, 167% growth in contributions, and industry-leading innovations in cloud automation for 2024."
+    },
+    {
+      "title": "Neo, Next-Gen Policies, and Platform Engineering at Scale",
+      "url": "https://www.pulumi.com/blog/",
+      "date": "2025-12-22",
+      "summary": "Pulumi's 2025 launches include the Neo AI agent for platform engineers, next-gen policy management, IDP, ESC integrations, and IaC enhancements."
+    },
+    {
+      "title": "Pulumi Supports Terraform and HCL for IaC",
+      "url": null,
+      "date": null,
+      "summary": "Pulumi now supports Terraform, OpenTofu, and HCL alongside Pulumi IaC, removing a long-standing barrier for users migrating or working across toolchains."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.crunchbase.com/organization/pulumi-corporation",
+      "scraped_at": "2026-05-16T22:02:43.644144+00:00"
+    },
+    {
+      "url": "https://www.crunchbase.com/funding_round/pulumi-corporation-series-c--643afe29",
+      "scraped_at": "2026-05-16T22:02:43.644574+00:00"
+    },
+    {
+      "url": "https://www.pulumi.com/about/newsroom/",
+      "scraped_at": "2026-05-16T22:02:43.644579+00:00"
+    },
+    {
+      "url": "https://www.pulumi.com/blog/pulumi-year-in-review/",
+      "scraped_at": "2026-05-16T22:02:43.644582+00:00"
+    }
+  ]
+}

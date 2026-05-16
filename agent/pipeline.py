@@ -22,16 +22,14 @@ log = logging.getLogger("agent.pipeline")
 
 SEARCH_QUERIES: dict[SearchIntent, str] = {
     "overview": '"{name}" company wikipedia headquarters founded',
-    "founders": '"{name}" founders CEO linkedin background',
     "funding": '"{name}" funding round valuation crunchbase',
     "news": '"{name}" news announcement 2024 2025',
     "competitors": '"{name}" vs alternatives competitors',
-    "customers": '"{name}" pricing customers case study',
 }
 
-TOP_RESULTS_PER_QUERY = 5
-PAGES_TO_SCRAPE_PER_QUERY = 2
-MAX_TOTAL_SCRAPED_PAGES = 8
+TOP_RESULTS_PER_QUERY = 3
+PAGES_TO_SCRAPE_PER_QUERY = 0
+MAX_TOTAL_SCRAPED_PAGES = 0
 
 
 async def _collect(name: str, website: str) -> RawSignal:
@@ -59,6 +57,8 @@ async def _collect(name: str, website: str) -> RawSignal:
             q = tmpl.format(name=name)
             hits = [SearchHit(**h) for h in search_raw.get(q, [])]
             search_results[intent] = hits
+            if MAX_TOTAL_SCRAPED_PAGES <= 0:
+                continue
             for hit in hits[:PAGES_TO_SCRAPE_PER_QUERY]:
                 if hit.url in seen_urls:
                     continue

@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { analyzeCompany } from "../api";
+import { getDemoAnalysis } from "../demoData";
 import type { CompanyAnalysisResponse } from "../types";
 import AnalysisReport from "./AnalysisReport";
 
@@ -31,6 +32,13 @@ export default function LandingPage() {
     } finally {
       setLoading(false);
     }
+  }
+
+  function handleDemo() {
+    setError(null);
+    setCompanyName("Stripe");
+    setCompanyUrl("https://stripe.com/");
+    setResult(getDemoAnalysis("Stripe", "https://stripe.com/"));
   }
 
   return (
@@ -86,6 +94,14 @@ export default function LandingPage() {
             <div className="io-actions">
               <button className="io-submit" type="submit" disabled={loading || !companyName.trim()}>
                 {loading ? "Analyzing…" : "Generate memo"}
+              </button>
+              <button
+                className="io-demo"
+                type="button"
+                disabled={loading}
+                onClick={handleDemo}
+              >
+                Try demo
               </button>
             </div>
           </form>
